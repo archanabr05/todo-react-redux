@@ -33,6 +33,11 @@ function ListContainer(props) {
     setListNameHooks(e.target.value);
   };
 
+  let addNewListItem = () => {
+    props.createListItem(inputListName);
+    setListNameHooks('');
+  }
+
   return (
     <div>
       <div>
@@ -41,7 +46,7 @@ function ListContainer(props) {
           value={inputListName}
           onChange={e => setListName(e)}
         />
-        <button onClick={() => props.createListItem(inputListName)}>
+        <button onClick={addNewListItem}>
           Add New List
         </button>
         <ul>{listItems}</ul>
