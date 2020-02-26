@@ -12,6 +12,11 @@ export class TaskContainer extends React.Component {
     this.setState({taskInputText: e.target.value});
   }
 
+  addNewListItem = () => {
+    this.props.state.createTaskItem(this.state.taskInputText);
+    this.setState({taskInputText: ''});
+  }
+
   render() {
     let props = this.props.state;
     let todoList = props.state;
@@ -40,7 +45,7 @@ export class TaskContainer extends React.Component {
     return (
       <div>
         <input type="text" value={this.state.taskInputText} onChange={(e) => this.setTaskName(e)} />
-        <button onClick={() => props.createTaskItem(this.state.taskInputText)}>Add New Task</button>
+        <button onClick={this.addNewListItem}>Add New Task</button>
         <ul>{taskItems}</ul>
       </div>
     );
